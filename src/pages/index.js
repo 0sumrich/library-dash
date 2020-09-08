@@ -3,6 +3,7 @@ import {useStaticQuery, graphql} from 'gatsby'
 import Header from "../components/header"
 import Grid from '@material-ui/core/Grid';
 import camelToSpace from '../helper/camelToSpace'
+import ChartWrapper from '../components/chartWrapper'
 
 const Side = ({ children }) => <Grid item sm={2}>{children}</Grid>
 const Main = ({ children }) => <Grid item sm={10}>{children}</Grid>
@@ -72,7 +73,7 @@ const names = Object.keys(data).map(o => <p>{camelToSpace(o.slice(3, -3))}</p>)
       <Side>{names}</Side>
       <Main>
         <Header siteTitle='Barnet Libraries' subTitle='KPIs' />
-        <p>content goes here</p>
+        <ChartWrapper data={data} />        
       </Main>
 
     </Grid>
