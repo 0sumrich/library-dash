@@ -16,7 +16,6 @@ const timeSeries = (x, y, name = undefined) =>
 
 // current borrowers
 function cb(d) {
-    // filter data first
     // Current_borrowers__at_this_date_ = COUNT
     // field1 = DATE
     const dateField = 'field1'
