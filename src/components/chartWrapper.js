@@ -8,7 +8,7 @@ import Plot from 'react-plotly.js';
 // onInitialized={(figure) => this.setState(figure)}
 // onUpdate={(figure) => this.setState(figure)}
 
-function ChartWrapper({ data }) {
+function ChartWrapper({data}) {
     const [chartData, setChartData] = useState([
         {
             x: [1, 2, 3],

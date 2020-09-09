@@ -73,7 +73,7 @@ const names = Object.keys(data).map(o => <p>{camelToSpace(o.slice(3, -3))}</p>)
       <Side>{names}</Side>
       <Main>
         <Header siteTitle='Barnet Libraries' subTitle='KPIs' />
-        <ChartWrapper data={data} />        
+        <ChartWrapper data={data[Object.keys(data)[0]]}/>
       </Main>
 
     </Grid>
