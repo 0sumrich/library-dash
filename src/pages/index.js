@@ -1,9 +1,10 @@
 import React from 'react'
-import {useStaticQuery, graphql} from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 import Header from "../components/header"
 import Grid from '@material-ui/core/Grid';
 import camelToSpace from '../helper/camelToSpace'
-import ChartWrapper from '../components/chartWrapper'
+import ContentWrapper from '../components/contentWrapper'
+import writeFigures from '../helper/writeFigures'
 
 const Side = ({ children }) => <Grid item sm={2}>{children}</Grid>
 const Main = ({ children }) => <Grid item sm={10}>{children}</Grid>
@@ -20,7 +21,6 @@ function IndexPage() {
     }
     allEloansCsv {
       nodes {
-        RBdigital
         Week_commencing
         eaudio
         ebooks
@@ -67,13 +67,13 @@ function IndexPage() {
     }
   }
   `)
-const names = Object.keys(data).map(o => <p>{camelToSpace(o.slice(3, -3))}</p>)
+  const names = Object.keys(data).map(o => <p>{camelToSpace(o.slice(3, -3))}</p>)
   return (
     <Grid container>
       <Side>{names}</Side>
       <Main>
         <Header siteTitle='Barnet Libraries' subTitle='KPIs' />
-        <ChartWrapper data={data[Object.keys(data)[0]]}/>
+        <ContentWrapper figures={writeFigures(data)} />
       </Main>
 
     </Grid>

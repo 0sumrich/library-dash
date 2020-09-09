@@ -8,18 +8,9 @@ import Plot from 'react-plotly.js';
 // onInitialized={(figure) => this.setState(figure)}
 // onUpdate={(figure) => this.setState(figure)}
 
-function ChartWrapper({data}) {
-    const [chartData, setChartData] = useState([
-        {
-            x: [1, 2, 3],
-            y: [2, 6, 3],
-            type: 'scatter',
-            mode: 'lines+markers',
-            marker: { color: 'red' },
-        },
-        { type: 'bar', x: [1, 2, 3], y: [2, 5, 3] },
-    ])
-    const [layout, setLayout] = useState({ title: 'A Fancy Plot' })
+function ChartWrapper({data, title}) {
+    const [chartData, setChartData] = useState(data)
+    const [layout, setLayout] = useState({ title })
     const [figure, setFigure] = useState(null)
     const [config, setConfig] = useState({
         scrollZoom: true
