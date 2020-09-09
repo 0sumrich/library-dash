@@ -90,18 +90,29 @@ function issuesRenewals(d) {
     ]
 }
 
+function socialMedia(data) {
+    const d = data.filter(o => o['Facebook_Engagements']!==''&&o['Twitter_Engagements']!=='')
+    const x = d.map(o => o['Week_commencing'])
+    const trace = (x, y, name) => ({ x, y, name, type: 'bar' })
+    return [
+        trace(x, d.map(o => o['Facebook_Engagements']), 'Facebook Engagements'),
+        trace(x, d.map(o => o['Twitter_Engagements']), 'Twitter Engagements')
+    ]
+}
+
 function writeFigures(data) {
-    return {
-        'Current borrowers': cb(data['allBorrowersCsv'].nodes),
-        'New borrowers': nb(data['allBorrowersCsv'].nodes.slice(0, -1)),
-        'eloans': eloans(data['allEloansCsv'].nodes),
-        'eusers': eusers(data['allEusersCsv'].nodes),
-        'Issues and renewals': issuesRenewals(data['allIssuesRenewalsCsv'].nodes),
-        // 'Social media': '',
-        // 'Website': '',
-        // 'Youtube': '',
-        // 'Youtube scatter': ''
-    }
+    return [
+        { data: cb(data['allBorrowersCsv'].nodes), layout: { title: 'Current borrowers' } },
+        { data: nb(data['allBorrowersCsv'].nodes.slice(0, -1)), layout: { title: 'New borrowers' } },
+        { data: eloans(data['allEloansCsv'].nodes), layout: { title: 'eloans' } },
+        { data: eusers(data['allEusersCsv'].nodes), layout: { title: 'eusers' } },
+        { data: issuesRenewals(data['allIssuesRenewalsCsv'].nodes), layout: { title: 'Issues and renewals' } },
+        { data: socialMedia(data['allSocialMediaCsv'].nodes), layout: { title: 'Social media', barmode: 'group' } }
+    ]
+    // 'Social media': socialMedia(data['allSocialMedia.csv'].nodes),
+    // 'Website': '',
+    // 'Youtube': '',
+    // 'Youtube scatter': ''
 }
 
 export default writeFigures

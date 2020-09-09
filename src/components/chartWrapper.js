@@ -8,9 +8,9 @@ import Plot from 'react-plotly.js';
 // onInitialized={(figure) => this.setState(figure)}
 // onUpdate={(figure) => this.setState(figure)}
 
-function ChartWrapper({data, title}) {
+function ChartWrapper({data, layout}) {
     const [chartData, setChartData] = useState(data)
-    const [layout, setLayout] = useState({ title })
+    const [chartLayout, setChartLayout] = useState(layout)
     const [figure, setFigure] = useState(null)
     const [config, setConfig] = useState({
         scrollZoom: true
@@ -18,7 +18,7 @@ function ChartWrapper({data, title}) {
     return (
         <Plot
             data={chartData}
-            layout={layout}
+            layout={chartLayout}
             config={config}
             onInitialized={(fig) => setFigure(fig)}
             onUpdate={(fig) => setFigure(fig)}
