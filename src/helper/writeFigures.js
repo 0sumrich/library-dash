@@ -90,13 +90,41 @@ function issuesRenewals(d) {
 }
 
 function socialMedia(data) {
-    const d = data.filter(o => o['Facebook_Engagements']!==''&&o['Twitter_Engagements']!=='')
+    const d = data.filter(o => o['Facebook_Engagements'] !== '' && o['Twitter_Engagements'] !== '')
     const x = d.map(o => o['Week_commencing'])
     const trace = (x, y, name) => ({ x, y, name, type: 'bar' })
     return [
         trace(x, d.map(o => o['Facebook_Engagements']), 'Facebook'),
         trace(x, d.map(o => o['Twitter_Engagements']), 'Twitter')
     ]
+}
+
+function website(data) {
+    const x = data.map(o => o['Week_commencing'])
+    const y = data.map(o => o['Page_Views'])
+    return [timeSeries(x, y)]
+}
+
+function youtube(data) {
+    // date
+    //     publishedAt
+    //     title
+    //     viewCount
+
+
+    // const x = unpack('publishedAt')
+    // const y = unpack('viewCount')
+    // const name = unpack('title')
+    const trace = o => ({
+        type: 'scatter',
+        mode: 'markers',
+        x: [o.publishedAt],
+        y: [o.viewCount],
+        name: o.title,
+        text: [o.title, o.viewCount],
+        showlegend: false
+    })
+    return data.map(o => trace(o))
 }
 
 function writeFigures(data) {
@@ -106,12 +134,10 @@ function writeFigures(data) {
         { data: eloans(data['allEloansCsv'].nodes), layout: { title: 'eloans' } },
         { data: eusers(data['allEusersCsv'].nodes), layout: { title: 'eusers' } },
         { data: issuesRenewals(data['allIssuesRenewalsCsv'].nodes), layout: { title: 'Issues and renewals' } },
-        { data: socialMedia(data['allSocialMediaCsv'].nodes), layout: { title: 'Social media', barmode: 'group' } }
+        { data: socialMedia(data['allSocialMediaCsv'].nodes), layout: { title: 'Social media', barmode: 'group' } },
+        { data: website(data['allWebsiteCsv'].nodes), layout: { title: 'Council website' } },
+        { data: youtube(data['allYtVideosCsv'].nodes), layout: { title: 'Youtube Videos', hovermode:'closest'} }
     ]
-    // 'Social media': socialMedia(data['allSocialMedia.csv'].nodes),
-    // 'Website': '',
-    // 'Youtube': '',
-    // 'Youtube scatter': ''
 }
 
 export default writeFigures

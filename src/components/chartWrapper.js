@@ -36,18 +36,20 @@ function ChartWrapper({ data, layout, id }) {
         responsive: true
     })
     return (
-        <Card className={classes.root} id={id}>
-            <CardContent className={classes.cardHelper}>
-                <Plot
-                    className={classes.plot}
-                    data={chartData}
-                    layout={chartLayout}
-                    config={config}
-                    onInitialized={(fig) => setFigure(fig)}
-                    onUpdate={(fig) => setFigure(fig)}
-                />
-            </CardContent>
-        </Card>
+        <section id={id}>
+            <Card className={classes.root}>
+                <CardContent className={classes.cardHelper}>
+                    <Plot
+                        className={classes.plot}
+                        data={chartData}
+                        layout={chartLayout}
+                        config={config}
+                        onInitialized={(fig) => setFigure(fig)}
+                        onUpdate={(fig) => setFigure(fig)}
+                    />
+                </CardContent>
+            </Card>
+        </section>
     );
 }
 
