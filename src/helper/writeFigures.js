@@ -94,8 +94,8 @@ function socialMedia(data) {
     const x = d.map(o => o['Week_commencing'])
     const trace = (x, y, name) => ({ x, y, name, type: 'bar' })
     return [
-        trace(x, d.map(o => o['Facebook_Engagements']), 'Facebook Engagements'),
-        trace(x, d.map(o => o['Twitter_Engagements']), 'Twitter Engagements')
+        trace(x, d.map(o => o['Facebook_Engagements']), 'Facebook'),
+        trace(x, d.map(o => o['Twitter_Engagements']), 'Twitter')
     ]
 }
 
