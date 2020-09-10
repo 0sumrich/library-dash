@@ -1,8 +1,8 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Header from "../components/header"
+import SideNav from '../components/sideNav'
 import Grid from '@material-ui/core/Grid';
-import camelToSpace from '../helper/camelToSpace'
 import ContentWrapper from '../components/contentWrapper'
 import writeFigures from '../helper/writeFigures'
 
@@ -68,10 +68,9 @@ function IndexPage() {
   }
   `)
   const figures = writeFigures(data)
-  const titles = figures.map(o => <p key={o.layout.title}>{o.layout.title}</p>)
   return (
     <Grid container>
-      <Side>{titles}</Side>
+      <Side><SideNav titles={figures.map(o => o.layout.title)} /></Side>
       <Main>
         <Header siteTitle='Barnet Libraries' subTitle='KPIs' />
         <ContentWrapper figures={figures} />

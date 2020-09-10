@@ -22,7 +22,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
-    "react-plotly.js": "^2.4.0"
+    "react-plotly.js": "^2.4.0",
+    "react-scrollspy": "^3.4.3"
   },
   "devDependencies": {
     "prettier": "2.1.1"
