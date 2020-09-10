@@ -67,13 +67,14 @@ function IndexPage() {
     }
   }
   `)
-  const names = Object.keys(data).map(o => <p>{camelToSpace(o.slice(3, -3))}</p>)
+  const figures = writeFigures(data)
+  const titles = figures.map(o => <p key={o.layout.title}>{o.layout.title}</p>)
   return (
     <Grid container>
-      <Side>{names}</Side>
+      <Side>{titles}</Side>
       <Main>
         <Header siteTitle='Barnet Libraries' subTitle='KPIs' />
-        <ContentWrapper figures={writeFigures(data)} />
+        <ContentWrapper figures={figures} />
       </Main>
 
     </Grid>
