@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 
 const makeId = str => str.replace(/\s+/g, '-').toLowerCase()
 
-function ChartWrapper({ data, layout }) {
+function ChartWrapper({ data, layout, id }) {
     const classes = useStyles()
     const [chartData, setChartData] = useState(data)
     const [chartLayout, setChartLayout] = useState(layout)
@@ -36,7 +36,7 @@ function ChartWrapper({ data, layout }) {
         responsive: true
     })
     return (
-        <Card className={classes.root}>
+        <Card className={classes.root} id={id}>
             <CardContent className={classes.cardHelper}>
                 <Plot
                     className={classes.plot}

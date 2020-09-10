@@ -15,7 +15,7 @@ function ContentWrapper({ figures }) {
     const makeId = str => str.replace(/\s+/g, '-').toLowerCase()
     return (
         <div className={classes.root}>
-            {figures.map(fig => <ChartWrapper key={makeId(fig.layout.title)} data={fig.data} layout={fig.layout} />)}
+            {figures.map(fig => <ChartWrapper key={makeId(fig.layout.title)} data={fig.data} layout={fig.layout} id={makeId(fig.layout.title)}/>)}
         </div>
     )
 }
