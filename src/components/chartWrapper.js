@@ -2,14 +2,9 @@ import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import Plot from 'react-plotly.js';
+import Loadable from 'react-loadable'
+import LinearProgress from '@material-ui/core/LinearProgress';
 
-// data={this.state.data}
-// layout={this.state.layout}
-// frames={this.state.frames}
-// config={this.state.config}
-// onInitialized={(figure) => this.setState(figure)}
-// onUpdate={(figure) => this.setState(figure)}
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -24,6 +19,17 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+const LoadablePlot = Loadable({
+    loader: () => import('react-plotly.js'),
+    loading() {
+        return <LinearProgress />
+    },
+    render(loaded, props) {
+        let Plot = loaded.default;
+        return <Plot {...props} />
+    }
+});
+
 function ChartWrapper({ data, layout, id }) {
     const classes = useStyles()
     const [chartData, setChartData] = useState(data)
@@ -37,7 +43,7 @@ function ChartWrapper({ data, layout, id }) {
         <section id={id}>
             <Card className={classes.root}>
                 <CardContent className={classes.cardHelper}>
-                    <Plot
+                    <LoadablePlot
                         className={classes.plot}
                         data={chartData}
                         layout={chartLayout}
