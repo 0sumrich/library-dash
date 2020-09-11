@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
 const LoadablePlot = Loadable({
     loader: () => import('react-plotly.js'),
     loading() {
-        return <LinearProgress />
+        return null
     }
 });
 
