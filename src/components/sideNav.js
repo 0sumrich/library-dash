@@ -6,13 +6,22 @@ import makeId from '../helper/makeId'
 import Scrollspy from 'react-scrollspy'
 
 const useStyles = makeStyles(theme => {
+  // debugger;
   return {
     root: {
       position: 'fixed',
-      overflow: 'hidden'
+      paddingLeft: theme.spacing(1),
+      marginTop: theme.spacing(3)
     },
     link: {
-      color: theme.palette.text.primary
+      color: theme.palette.text.primary,
+      '&:hover': {
+        color: theme.palette.text.secondary,
+        borderLeft: `1px solid ${theme.palette.secondary.main}`
+      }
+    }, 
+    active: {
+      borderLeft: `2px solid ${theme.palette.secondary.main}`
     }
   }
 });
@@ -25,8 +34,8 @@ function SideNav({ titles }) {
   const classes = useStyles()
   const ids = titles.map(o => makeId(o))
   return (
-    <Scrollspy items={ids} currentClassName="is-current">
-      {titles.map((title, i) => <ListItemLink href={`#${ids[i]}`}><ListItemText className={classes.link} primary={title}></ListItemText></ListItemLink>)}
+    <Scrollspy items={ids} currentClassName={classes.active} className={classes.root}>
+      {titles.map((title, i) => <ListItemLink className={classes.link} href={`#${ids[i]}`}><ListItemText primary={title}></ListItemText></ListItemLink>)}
     </Scrollspy >
   )
 }

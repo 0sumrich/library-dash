@@ -24,8 +24,6 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const makeId = str => str.replace(/\s+/g, '-').toLowerCase()
-
 function ChartWrapper({ data, layout, id }) {
     const classes = useStyles()
     const [chartData, setChartData] = useState(data)
