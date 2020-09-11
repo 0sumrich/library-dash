@@ -6,7 +6,6 @@ import makeId from '../helper/makeId'
 import Scrollspy from 'react-scrollspy'
 
 const useStyles = makeStyles(theme => {
-  // debugger;
   return {
     root: {
       position: 'fixed',
@@ -19,7 +18,7 @@ const useStyles = makeStyles(theme => {
         color: theme.palette.text.secondary,
         borderLeft: `1px solid ${theme.palette.secondary.main}`
       }
-    }, 
+    },
     active: {
       borderLeft: `2px solid ${theme.palette.secondary.main}`
     }
