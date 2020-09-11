@@ -23,10 +23,6 @@ const LoadablePlot = Loadable({
     loader: () => import('react-plotly.js'),
     loading() {
         return <LinearProgress />
-    },
-    render(loaded, props) {
-        let Plot = loaded.default;
-        return <Plot {...props} />
     }
 });
 
