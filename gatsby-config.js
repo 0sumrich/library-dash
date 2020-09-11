@@ -1,5 +1,5 @@
-// const { typeNameFromDir, typeNameFromFile } = require("gatsby-transformer-csv")
 module.exports = {
+  pathPrefix: "/library-dash",
   siteMetadata: {
     title: `Barnet Libraries Stats`,
     author: `github.com/0sumrich`,
