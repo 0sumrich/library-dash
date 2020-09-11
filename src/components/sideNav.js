@@ -1,33 +1,34 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import makeId from '../helper/makeId'
 import Scrollspy from 'react-scrollspy'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(theme => {
+  return {
     root: {
-      width: '100%',
       position: 'fixed',
       overflow: 'hidden'
     },
-  }));
+    link: {
+      color: theme.palette.text.primary
+    }
+  }
+});
 
 function ListItemLink(props) {
-    return <ListItem button component="a" {...props} />;
+  return <ListItem component="a" {...props} />;
 }
 
 function SideNav({ titles }) {
-    const classes = useStyles()
-    const ids = titles.map(o => makeId(o))
-    return (
-        <List className={classes.root}>
-            <Scrollspy items={ids} currentClassName="is-current">
-                {titles.map((title, i) => <ListItemLink href={`#${ids[i]}`}><ListItemText primary={title}></ListItemText></ListItemLink>)}
-            </Scrollspy>
-        </List >
-    )
+  const classes = useStyles()
+  const ids = titles.map(o => makeId(o))
+  return (
+    <Scrollspy items={ids} currentClassName="is-current">
+      {titles.map((title, i) => <ListItemLink href={`#${ids[i]}`}><ListItemText className={classes.link} primary={title}></ListItemText></ListItemLink>)}
+    </Scrollspy >
+  )
 }
 
 export default SideNav
