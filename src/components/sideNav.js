@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Hidden from '@material-ui/core/Hidden';
 import makeId from '../helper/makeId'
 import Scrollspy from 'react-scrollspy'
 
@@ -26,7 +27,11 @@ const useStyles = makeStyles(theme => {
 });
 
 function ListItemLink(props) {
-  return <ListItem component="a" {...props} />;
+  return (
+    <Hidden smDown>
+      <ListItem component="a" display='hidden' {...props} />
+    </Hidden>
+  );
 }
 
 function SideNav({ titles }) {
@@ -34,7 +39,7 @@ function SideNav({ titles }) {
   const ids = titles.map(o => makeId(o))
   return (
     <Scrollspy items={ids} currentClassName={classes.active} className={classes.root}>
-      {titles.map((title, i) => <ListItemLink className={classes.link} href={`#${ids[i]}`}><ListItemText primary={title}></ListItemText></ListItemLink>)}
+      {titles.map((title, i) => <ListItemLink key={ids[i]} className={classes.link} href={`#${ids[i]}`}><ListItemText primary={title}></ListItemText></ListItemLink>)}
     </Scrollspy >
   )
 }
