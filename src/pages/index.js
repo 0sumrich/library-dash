@@ -6,8 +6,8 @@ import Grid from '@material-ui/core/Grid';
 import ContentWrapper from '../components/contentWrapper'
 import writeFigures from '../helper/writeFigures'
 
-const Side = ({ children }) => <Grid item sm={false} md={2} >{children}</Grid>
-const Main = ({ children }) => <Grid item sm={12} md={10}>{children}</Grid>
+const Side = ({ children }) => <Grid item sm={2}>{children}</Grid>
+const Main = ({ children }) => <Grid item sm={10}>{children}</Grid>
 
 function IndexPage() {
   const data = useStaticQuery(graphql`

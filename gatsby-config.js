@@ -11,11 +11,11 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-material-ui',
       // If you want to use styled components you should change the injection order.
-      // options: {
-      //   stylesProvider: {
-      //     injectFirst: true,
-      //   },
-      // },
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -29,6 +29,6 @@ module.exports = {
     `gatsby-transformer-csv`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
   ],
 }
