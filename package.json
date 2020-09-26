@@ -1,7 +1,7 @@
 {
   "name": "library-dash",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Library dashboard",
   "version": "0.1.0",
   "author": "0sumrich",
   "dependencies": {
@@ -41,14 +41,10 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/0sumrich/library-dash"
   }
 }
