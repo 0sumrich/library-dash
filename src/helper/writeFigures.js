@@ -134,9 +134,9 @@ function writeFigures(data) {
         { data: eloans(data['allEloansCsv'].nodes), layout: { title: 'eloans' } },
         { data: eusers(data['allEusersCsv'].nodes), layout: { title: 'eusers' } },
         { data: issuesRenewals(data['allIssuesRenewalsCsv'].nodes), layout: { title: 'Issues and renewals' } },
-        { data: socialMedia(data['allSocialMediaCsv'].nodes), layout: { title: 'Social media', barmode: 'group' } },
+        { data: socialMedia(data['allSocialMediaCsv'].nodes), layout: { title: 'Social media', barmode: 'group', xaxis: { title: "Week commencing" }, yaxis: { title: 'Engagements' } } },
         { data: website(data['allWebsiteCsv'].nodes), layout: { title: 'Council website' } },
-        { data: youtube(data['allYtVideosCsv'].nodes), layout: { title: 'Youtube Videos', hovermode:'closest'} }
+        { data: youtube(data['allYtVideosCsv'].nodes), layout: { title: 'Youtube Videos', hovermode: 'closest', xaxis: { title: 'Date published' }, yaxis: { title: 'Number of views' } } }
     ]
 }
 

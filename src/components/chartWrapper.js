@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Loadable from 'react-loadable'
-import LinearProgress from '@material-ui/core/LinearProgress';
 
 
 const useStyles = makeStyles(theme => ({
