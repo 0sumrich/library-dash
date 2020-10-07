@@ -44,6 +44,12 @@ function IndexPage() {
         Loans
       }
     }
+    allPrismCsv {
+      nodes {
+        Week_commencing
+        Page_Views
+      }
+    }
     allSocialMediaCsv {
       nodes {
         Week_commencing

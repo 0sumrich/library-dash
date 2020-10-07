@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 const timeSeries = (x, y, name = undefined) =>
     name ?
         {
@@ -54,7 +56,8 @@ function eloans(d) {
         )
 }
 
-function eusers(d) {
+function eusers(data) {
+    const d = data.filter(o => moment(o['Week_commencing']).isSameOrAfter('2020-01-01'))
     // 'Week_commencing',
     return [
         'RBDigital',
@@ -106,15 +109,6 @@ function website(data) {
 }
 
 function youtube(data) {
-    // date
-    //     publishedAt
-    //     title
-    //     viewCount
-
-
-    // const x = unpack('publishedAt')
-    // const y = unpack('viewCount')
-    // const name = unpack('title')
     const trace = o => ({
         type: 'scatter',
         mode: 'markers',
@@ -128,6 +122,7 @@ function youtube(data) {
 }
 
 function writeFigures(data) {
+
     return [
         { data: cb(data['allBorrowersCsv'].nodes), layout: { title: 'Current borrowers' } },
         { data: nb(data['allBorrowersCsv'].nodes.slice(0, -1)), layout: { title: 'New borrowers' } },
@@ -135,7 +130,8 @@ function writeFigures(data) {
         { data: eusers(data['allEusersCsv'].nodes), layout: { title: 'eusers' } },
         { data: issuesRenewals(data['allIssuesRenewalsCsv'].nodes), layout: { title: 'Issues and renewals' } },
         { data: socialMedia(data['allSocialMediaCsv'].nodes), layout: { title: 'Social media', barmode: 'group', xaxis: { title: "Week commencing" }, yaxis: { title: 'Engagements' } } },
-        { data: website(data['allWebsiteCsv'].nodes), layout: { title: 'Council website' } },
+        { data: website(data['allPrismCsv'].nodes), layout: { title: 'Prism', xaxis: { title: "Week commencing" }, yaxis: { title: 'Page views' } } },
+        { data: website(data['allWebsiteCsv'].nodes), layout: { title: 'Council website', xaxis: { title: "Week commencing" }, yaxis: { title: 'Page views' } } },
         { data: youtube(data['allYtVideosCsv'].nodes), layout: { title: 'Youtube Videos', hovermode: 'closest', xaxis: { title: 'Date published' }, yaxis: { title: 'Number of views' } } }
     ]
 }
