@@ -69,6 +69,15 @@ function IndexPage() {
         publishedAt
         title
         viewCount
+        age
+      }
+    }
+    allFbVidsCsv {
+      nodes {
+        title
+        views
+        description
+        created_time
       }
     }
   }

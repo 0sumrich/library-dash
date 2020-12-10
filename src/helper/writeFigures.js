@@ -108,14 +108,43 @@ function website(data) {
     return [timeSeries(x, y)]
 }
 
+// function youtube(data) {
+//     const trace = o => ({
+//         type: 'scatter',
+//         mode: 'markers',
+//         x: [o.publishedAt],
+//         y: [o.viewCount],
+//         name: o.title,
+//         text: [o.title, o.viewCount],
+//         showlegend: false
+//     })
+//     return data.map(o => trace(o))
+// }
 function youtube(data) {
-    const trace = o => ({
+    const ages = [...new Set(data.map(o => o.age))]
+    const traces = ages.map(age => {
+        const d = data.filter(o => o.age === age)
+        return {
+            type: 'scatter',
+            mode: 'markers',
+            x: d.map(o => o.publishedAt),
+            y: d.map(o => o.viewCount),
+            name: age ? age : 'Unknown',
+            text: d.map(o => o.title),
+            hovertemplate: `<i>%{text}</i></br></br>%{x}</br>%{y}<extra></extra>`
+        }
+    })
+    return traces
+}
+
+function fb(data) {
+    const trace = ({ description, views, created_time }) => ({
         type: 'scatter',
         mode: 'markers',
-        x: [o.publishedAt],
-        y: [o.viewCount],
-        name: o.title,
-        text: [o.title, o.viewCount],
+        x: [created_time],
+        y: [views],
+        name: description,
+        text: [description, views],
         showlegend: false
     })
     return data.map(o => trace(o))
@@ -132,7 +161,8 @@ function writeFigures(data) {
         { data: socialMedia(data['allSocialMediaCsv'].nodes), layout: { title: 'Social media', barmode: 'group', xaxis: { title: "Week commencing" }, yaxis: { title: 'Engagements' } } },
         { data: website(data['allPrismCsv'].nodes), layout: { title: 'Prism', xaxis: { title: "Week commencing" }, yaxis: { title: 'Page views' } } },
         { data: website(data['allWebsiteCsv'].nodes), layout: { title: 'Council website', xaxis: { title: "Week commencing" }, yaxis: { title: 'Page views' } } },
-        { data: youtube(data['allYtVideosCsv'].nodes), layout: { title: 'Youtube Videos', hovermode: 'closest', xaxis: { title: 'Date published' }, yaxis: { title: 'Number of views' } } }
+        { data: youtube(data['allYtVideosCsv'].nodes), layout: { title: 'Youtube Videos', hovermode: 'closest', xaxis: { title: 'Date published' }, yaxis: { title: 'Number of views' } } },
+        { data: fb(data['allFbVidsCsv'].nodes), layout: { title: 'Facebook Videos', hovermode: 'closest', xaxis: { title: 'Date published' }, yaxis: { title: 'Number of views' } } }
     ]
 }
 
