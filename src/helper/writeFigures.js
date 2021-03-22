@@ -108,18 +108,6 @@ function website(data) {
     return [timeSeries(x, y)]
 }
 
-// function youtube(data) {
-//     const trace = o => ({
-//         type: 'scatter',
-//         mode: 'markers',
-//         x: [o.publishedAt],
-//         y: [o.viewCount],
-//         name: o.title,
-//         text: [o.title, o.viewCount],
-//         showlegend: false
-//     })
-//     return data.map(o => trace(o))
-// }
 function youtube(data) {
     const ages = [...new Set(data.map(o => o.age))]
     const traces = ages.map(age => {
@@ -151,7 +139,6 @@ function fb(data) {
 }
 
 function writeFigures(data) {
-
     return [
         { data: cb(data['allBorrowersCsv'].nodes), layout: { title: 'Current borrowers' } },
         { data: nb(data['allBorrowersCsv'].nodes.slice(0, -1)), layout: { title: 'New borrowers' } },
@@ -166,4 +153,29 @@ function writeFigures(data) {
     ]
 }
 
-export default writeFigures
+function writeConferenceCsvFigures(data) {
+    return [
+        { data: socialMedia(data['allSocialMediaCsv'].nodes), layout: { title: 'Social media', barmode: 'group', xaxis: { title: "Week commencing" }, yaxis: { title: 'Engagements' } } },
+        { data: youtube(data['allYtVideosCsv'].nodes), layout: { title: 'Youtube Videos', hovermode: 'closest', xaxis: { title: 'Date published' }, yaxis: { title: 'Number of views' } } },
+        { data: fb(data['allFbVidsCsv'].nodes), layout: { title: 'Facebook Videos', hovermode: 'closest', xaxis: { title: 'Date published' }, yaxis: { title: 'Number of views' } } }
+    ]
+}
+
+function writeConferenceJsonFigures(o) {
+    const keys = Object.keys(o)
+    const res = []
+    for (const key of keys) {
+        const {data, layout} = o[key]
+        layout.title.text = key
+        res.push({data, layout})
+    }
+    return res
+}
+
+function writeConferenceFigures(csvData, jsonData) {
+    const csvFigures = writeConferenceCsvFigures(csvData)
+    const jsonFigures = writeConferenceJsonFigures(jsonData)
+    return jsonFigures.concat(csvFigures)
+}
+
+export { writeFigures, writeConferenceFigures }

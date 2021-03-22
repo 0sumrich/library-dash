@@ -1,5 +1,6 @@
 module.exports = {
   pathPrefix: "/library-dash",
+  flags: { PRESERVE_WEBPACK_CACHE: true },
   siteMetadata: {
     title: `Barnet Libraries Stats`,
     author: `github.com/0sumrich`,
@@ -19,6 +20,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
