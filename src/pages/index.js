@@ -4,7 +4,7 @@ import Header from "../components/header"
 import SideNav from '../components/sideNav'
 import Grid from '@material-ui/core/Grid';
 import ContentWrapper from '../components/contentWrapper'
-import writeFigures from '../helper/writeFigures'
+import { writeFigures } from '../helper/writeFigures'
 
 const Side = ({ children }) => <Grid item md={2} sm={false} xs={false}>{children}</Grid>
 const Main = ({ children }) => <Grid item md={10} sm={12} xs={12}>{children}</Grid>
