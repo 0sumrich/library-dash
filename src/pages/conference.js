@@ -8,6 +8,7 @@ import { writeConferenceFigures } from '../helper/writeFigures'
 import loansByItemType from '../data/monthly_loans_by_item_type.json'
 import loansBySite from '../data/monthly_loans_by_site.json'
 import selectAndCollectUsers from '../data/weekly_select_and_collect_users.json'
+import onlineEvents from '../data/online_events.json'
 import makeID from '../helper/makeId';
 
 const Side = ({ children }) => <Grid item md={2} sm={false} xs={false}>{children}</Grid>
@@ -45,7 +46,8 @@ function ConferencePage() {
   const jsonData = {
     'Loans by item type': loansByItemType,
     'Loans by site': loansBySite,
-    'Select and collect weekly users': selectAndCollectUsers
+    'Select and collect weekly users': selectAndCollectUsers,
+    'Online events': onlineEvents
   }
   const figures = writeConferenceFigures(csvData, jsonData)
   const titles = figures.map(o => typeof (o.layout.title) === 'string' ? o.layout.title : o.layout.title.text)
