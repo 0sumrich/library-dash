@@ -45,9 +45,9 @@ function ConferencePage() {
   }
   `)
   const jsonData = {
-    'Loans + Renewals since April 2019': totalLoans,
-    'Select and Collect Loans by item type': loansByItemType,
-    'Select and Collect Loans by site': loansBySite,
+    'Loans': totalLoans,
+    'S&C Loans by item type': loansByItemType,
+    'S&C and Collect Loans by site': loansBySite,
     'Select and collect weekly users': selectAndCollectUsers,
     'Online events': onlineEvents
   }
