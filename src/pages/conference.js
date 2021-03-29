@@ -46,10 +46,10 @@ function ConferencePage() {
   `)
   const jsonData = {
     'Loans': totalLoans,
-    'S&C Loans by item type': loansByItemType,
-    'S&C and Collect Loans by site': loansBySite,
-    'Select and collect weekly users': selectAndCollectUsers,
-    'Online events': onlineEvents
+    'S&C Loans by Item Type': loansByItemType,
+    'S&C Loans by Site': loansBySite,
+    'S&C Weekly Users': selectAndCollectUsers,
+    'Online Events': onlineEvents
   }
   const figures = writeConferenceFigures(csvData, jsonData)
   const titles = figures.map(o => typeof (o.layout.title) === 'string' ? o.layout.title : o.layout.title.text)
