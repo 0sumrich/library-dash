@@ -9,6 +9,7 @@ import loansByItemType from '../data/monthly_loans_by_item_type.json'
 import loansBySite from '../data/monthly_loans_by_site.json'
 import selectAndCollectUsers from '../data/weekly_select_and_collect_users.json'
 import onlineEvents from '../data/online_events.json'
+import hls from '../data/home_library_loans_only.json'
 import totalLoans from '../data/total_loans.json'
 import makeID from '../helper/makeId';
 
@@ -49,6 +50,7 @@ function ConferencePage() {
     'S&C Loans by Item Type': loansByItemType,
     'S&C Loans by Site': loansBySite,
     'S&C Weekly Users': selectAndCollectUsers,
+    'HLS Loans': hls,
     'Online Events': onlineEvents
   }
   const figures = writeConferenceFigures(csvData, jsonData)
