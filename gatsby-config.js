@@ -4,13 +4,13 @@ module.exports = {
   siteMetadata: {
     title: `Barnet Libraries Stats`,
     author: `github.com/0sumrich`,
-    description: 'KPIs'
+    description: "KPIs",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    'gatsby-plugin-top-layout',
+    "gatsby-plugin-top-layout",
     {
-      resolve: 'gatsby-plugin-material-ui',
+      resolve: "gatsby-plugin-material-ui",
       // If you want to use styled components you should change the injection order.
       options: {
         stylesProvider: {
